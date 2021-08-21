@@ -4,8 +4,8 @@ import org.junit.Assert;
 import org.junit.Test;
 public class MyLinkedListTest {
     @Test
-    public void DeleteTheLastNodeOfALinkedList() {
-        System.out.println("----TASK 5----");
+    public void SearchLinkedListForAnElement() {
+        System.out.println("----TASK----");
         MyNode<Integer> myFirstNode = new MyNode<>(70);
         MyNode<Integer> mySecondNode = new MyNode<>(30);
         MyNode<Integer> myThirdNode = new MyNode<>(56);
@@ -15,12 +15,11 @@ public class MyLinkedListTest {
         myLinkedList.addToBack(mySecondNode);
         myLinkedList.addToBack(myThirdNode);
 
-        INode<Integer> deletedLastNode = myLinkedList.deleteLastElementInLinkedList();
-        System.out.println("Deleted node is : " + deletedLastNode.getKey());
         myLinkedList.printMyNodes();
         System.out.println();
+        boolean isPresent = myLinkedList.SearchAnElementInALinkedList(30);
         System.out.println();
-        boolean result = myLinkedList.head.equals(myFirstNode) && myLinkedList.tail.equals(mySecondNode);
-        Assert.assertTrue(result);
+        System.out.println();
+        Assert.assertEquals(true, isPresent);
     }
 }

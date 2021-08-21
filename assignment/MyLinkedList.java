@@ -1,4 +1,5 @@
 package com.linkedlist.assignment;
+
 public class MyLinkedList {
     public INode head;
     public INode tail;
@@ -22,11 +23,22 @@ public class MyLinkedList {
         }
     }
 
-    public INode deleteLastElementInLinkedList() {
-        INode DeletedLastNode = tail;
-        INode tempNode = head.getNext();
-        tail = tempNode;
-        return DeletedLastNode;
+    public boolean SearchAnElementInALinkedList(Integer elementValue) {
+        // TODO Auto-generated method stub
+        INode pointerNode = head;
+        while(pointerNode!=tail) {
+            if(pointerNode.getKey() == elementValue) {
+                System.out.println("Element found");
+                return true;
+            }
+            pointerNode = pointerNode.getNext();
+        }
+        if(pointerNode.getKey() == elementValue) {
+            System.out.println("Element found");
+            return true;
+        }
+        System.out.println("Element not found");
+        return false;
     }
 
     public void printMyNodes() {
