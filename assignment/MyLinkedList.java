@@ -41,24 +41,38 @@ public class MyLinkedList {
         return false;
     }
 
-    public boolean InsertingAnElementAfterAnElementInALinkedList(Integer specifiedElement, INode newNode) {
+    public boolean DeletingAnElementInALinkedList(Integer specifiedElement) {
         // TODO Auto-generated method stub
         if(SearchAnElementInALinkedList(specifiedElement)) {
             INode pointerNode = head;
             while(pointerNode!=tail) {
-                if(pointerNode.getKey() == specifiedElement) {
-                    newNode.setNext(pointerNode.getNext());
-                    pointerNode.setNext(newNode);
+                if(pointerNode.getNext().getKey() == specifiedElement) {
+                    INode tempNode = pointerNode.getNext();
+                    pointerNode.setNext(tempNode.getNext());
+                    System.out.println("Deleted Element is : " + tempNode.getKey());
                     return true;
-                }else {
+                }
+                else {
                     pointerNode = pointerNode.getNext();
                     continue;
                 }
             }
+            return true;
         }else {
             return false;
         }
-        return false;
+    }
+
+    public int sizeOfLinkedList() {
+        int count = 0;
+        INode pointerNode = head;
+        while(pointerNode!=tail) {
+            count++;
+            pointerNode = pointerNode.getNext();
+        }
+        count++;
+        System.out.println("Size of linked list is : " + count);
+        return count;
     }
 
     public void printMyNodes() {

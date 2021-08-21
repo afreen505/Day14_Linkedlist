@@ -4,23 +4,26 @@ import org.junit.Assert;
 import org.junit.Test;
 public class MyLinkedListTest {
     @Test
-    public void InsertingAnElementAfterASpecifiedElementInLinkedList() {
+    public void DeletingASpecifiedElementInTheLinkedList_And_PrintingTheSizeOfIt() {
         System.out.println("----TASK----");
         MyNode<Integer> myFirstNode = new MyNode<>(56);
         MyNode<Integer> mySecondNode = new MyNode<>(30);
-        MyNode<Integer> myThirdNode = new MyNode<>(70);
+        MyNode<Integer> myThirdNode = new MyNode<>(40);
+        MyNode<Integer> myFourthNode = new MyNode<>(70);
 
         MyLinkedList myLinkedList = new MyLinkedList();
         myLinkedList.addToBack(myFirstNode);
         myLinkedList.addToBack(mySecondNode);
         myLinkedList.addToBack(myThirdNode);
+        myLinkedList.addToBack(myFourthNode);
 
         System.out.println();
-        MyNode<Integer> newNode = new MyNode<>(40);
-        boolean isInserted = myLinkedList.InsertingAnElementAfterAnElementInALinkedList(30, newNode);
+        boolean isDeleted = myLinkedList.DeletingAnElementInALinkedList(40);
+        int sizeOfLinkedList = myLinkedList.sizeOfLinkedList();
         myLinkedList.printMyNodes();
         System.out.println();
         System.out.println();
-        Assert.assertEquals(true, isInserted);
+        Assert.assertEquals(true, isDeleted);
+        Assert.assertEquals(3, sizeOfLinkedList);
     }
 }
