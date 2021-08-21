@@ -1,5 +1,4 @@
 package com.linkedlist.assignment;
-
 public class MyLinkedList {
     public INode head;
     public INode tail;
@@ -23,11 +22,11 @@ public class MyLinkedList {
         }
     }
 
-    public INode deleteFirstElementInLinkedList() {
-        INode DeletedFirstNode = head;
+    public INode deleteLastElementInLinkedList() {
+        INode DeletedLastNode = tail;
         INode tempNode = head.getNext();
-        head = tempNode;
-        return DeletedFirstNode;
+        tail = tempNode;
+        return DeletedLastNode;
     }
 
     public void printMyNodes() {
