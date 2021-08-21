@@ -23,6 +23,12 @@ public class MyLinkedList {
         }
     }
 
+    public void insertInBetweenTwoNodes(INode headNode, INode newNode) {
+        INode tempNode = headNode.getNext();
+        headNode.setNext(newNode);
+        newNode.setNext(tempNode);
+    }
+
     public void printMyNodes() {
         System.out.println("Head is : " + head.getKey());
         System.out.println("Tail is : " + tail.getKey());
