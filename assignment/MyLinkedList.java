@@ -41,6 +41,26 @@ public class MyLinkedList {
         return false;
     }
 
+    public boolean InsertingAnElementAfterAnElementInALinkedList(Integer specifiedElement, INode newNode) {
+        // TODO Auto-generated method stub
+        if(SearchAnElementInALinkedList(specifiedElement)) {
+            INode pointerNode = head;
+            while(pointerNode!=tail) {
+                if(pointerNode.getKey() == specifiedElement) {
+                    newNode.setNext(pointerNode.getNext());
+                    pointerNode.setNext(newNode);
+                    return true;
+                }else {
+                    pointerNode = pointerNode.getNext();
+                    continue;
+                }
+            }
+        }else {
+            return false;
+        }
+        return false;
+    }
+
     public void printMyNodes() {
         System.out.println("Head is : " + head.getKey());
         System.out.println("Tail is : " + tail.getKey());
