@@ -23,62 +23,37 @@ public class MyLinkedList {
         }
     }
 
-    public boolean SearchAnElementInALinkedList(Integer elementValue) {
+    public void SortedAdding(MyNode<Integer> currentNode) {
         // TODO Auto-generated method stub
-        INode pointerNode = head;
-        while(pointerNode!=tail) {
-            if(pointerNode.getKey() == elementValue) {
-                System.out.println("Element found");
-                return true;
-            }
-            pointerNode = pointerNode.getNext();
+        if (tail == null) {
+            this.tail = currentNode;
         }
-        if(pointerNode.getKey() == elementValue) {
-            System.out.println("Element found");
-            return true;
-        }
-        System.out.println("Element not found");
-        return false;
-    }
-
-    public boolean DeletingAnElementInALinkedList(Integer specifiedElement) {
-        // TODO Auto-generated method stub
-        if(SearchAnElementInALinkedList(specifiedElement)) {
-            INode pointerNode = head;
-            while(pointerNode!=tail) {
-                if(pointerNode.getNext().getKey() == specifiedElement) {
-                    INode tempNode = pointerNode.getNext();
-                    pointerNode.setNext(tempNode.getNext());
-                    System.out.println("Deleted Element is : " + tempNode.getKey());
-                    return true;
+        if (head == null) {
+            this.head = currentNode;
+        } else {
+            INode tempNode = head;
+            INode previousNode = head;
+            if (currentNode.getKey().compareTo((Integer) tempNode.getKey()) > 0) {
+                while (currentNode.getKey().compareTo((Integer) tempNode.getKey()) > 0 && tempNode.getNext() != null) {
+                    previousNode = tempNode;
+                    tempNode = tempNode.getNext();
                 }
-                else {
-                    pointerNode = pointerNode.getNext();
-                    continue;
+                if (currentNode.getKey().compareTo((Integer) tempNode.getKey()) < 0) {
+                    INode frontNode = tempNode;
+                    currentNode.setNext(frontNode);
+                    previousNode.setNext(currentNode);
+                } else {
+                    tempNode.setNext(currentNode);
+                    tail = currentNode;
                 }
+            } else {
+                currentNode.setNext(head);
+                head = currentNode;
             }
-            return true;
-        }else {
-            return false;
         }
-    }
-
-    public int sizeOfLinkedList() {
-        int count = 0;
-        INode pointerNode = head;
-        while(pointerNode!=tail) {
-            count++;
-            pointerNode = pointerNode.getNext();
-        }
-        count++;
-        System.out.println("Size of linked list is : " + count);
-        return count;
     }
 
     public void printMyNodes() {
-        System.out.println("Head is : " + head.getKey());
-        System.out.println("Tail is : " + tail.getKey());
-        System.out.println("My Nodes are : ");
         INode tempNode = head;
         while (tempNode != tail) {
             System.out.print(tempNode.getKey());
