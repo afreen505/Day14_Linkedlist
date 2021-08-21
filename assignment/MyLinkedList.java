@@ -23,10 +23,11 @@ public class MyLinkedList {
         }
     }
 
-    public void insertInBetweenTwoNodes(INode headNode, INode newNode) {
-        INode tempNode = headNode.getNext();
-        headNode.setNext(newNode);
-        newNode.setNext(tempNode);
+    public INode deleteFirstElementInLinkedList() {
+        INode DeletedFirstNode = head;
+        INode tempNode = head.getNext();
+        head = tempNode;
+        return DeletedFirstNode;
     }
 
     public void printMyNodes() {

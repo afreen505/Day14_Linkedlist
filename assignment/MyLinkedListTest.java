@@ -4,24 +4,23 @@ import org.junit.Assert;
 import org.junit.Test;
 public class MyLinkedListTest {
     @Test
-    public void insertANodeInBetweenTwoNodes() {
-        System.out.println("----TASK 3----");
-        MyNode<Integer> myFirstNode = new MyNode<>(56);
+    public void DeleteTheFirstNodeOfALinkedList() {
+        System.out.println("----TASK----");
+        MyNode<Integer> myFirstNode = new MyNode<>(70);
         MyNode<Integer> mySecondNode = new MyNode<>(30);
-        MyNode<Integer> myThirdNode = new MyNode<>(70);
+        MyNode<Integer> myThirdNode = new MyNode<>(56);
 
         MyLinkedList myLinkedList = new MyLinkedList();
         myLinkedList.addToBack(myFirstNode);
-        // myLinkedList.addToBack(mySecondNode);
+        myLinkedList.addToBack(mySecondNode);
         myLinkedList.addToBack(myThirdNode);
 
-        myLinkedList.insertInBetweenTwoNodes(myFirstNode, mySecondNode);
+        INode<Integer> deletedFirstNode = myLinkedList.deleteFirstElementInLinkedList();
+        System.out.println("Deleted node is : " + deletedFirstNode.getKey());
         myLinkedList.printMyNodes();
         System.out.println();
         System.out.println();
-        boolean result = myLinkedList.head.equals(myFirstNode) && myLinkedList.head.getNext().equals(mySecondNode)
-                && myLinkedList.tail.equals(myThirdNode);
+        boolean result = myLinkedList.head.equals(mySecondNode) && myLinkedList.tail.equals(myThirdNode);
         Assert.assertTrue(result);
     }
-
 }
